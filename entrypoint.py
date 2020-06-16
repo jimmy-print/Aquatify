@@ -1,5 +1,5 @@
 import data
-from constants import actions, queries
+from constants import actions, queries, should
 
 
 def input_generator():
@@ -9,11 +9,9 @@ def input_generator():
 
 def main():
     user = dict(input_generator())
-    for action in user:
+    for i, action in enumerate(user):
         if user[action] > data.optimal[action]:
-            print("%s is bad" % action)
-        else:
-            print("%s is good" % action)
+            print(should[i])
 
 
 if __name__ == '__main__':
