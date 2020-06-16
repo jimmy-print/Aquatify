@@ -17,7 +17,7 @@ queries = (
 )
 units = TIMES, MINUTES, LITRES
 should = (
-    NotImplemented,
+    'Unless your bladder is too small, you should flush the toilet less.',
     'You should take shorter showers.',
     'You should drink less water, unless you need to drink more.'
 )
