@@ -11,7 +11,9 @@ LITRES = 'litres'
 
 # The optimal amounts
 
+# https://www.webmd.com/urinary-incontinence-oab/rm-quiz-urine-normal
 # https://www.pub.gov.sg/Documents/PUB_7%20Good%20water%20saving%20habits_FA_LORES.pdf
+# https://www.thefinder.com.sg/healthy-living/fitness/how-much-water-must-you-actually-drink-singapores-insane-hot/
 
 optimal = {
     FLUSH: 8,
