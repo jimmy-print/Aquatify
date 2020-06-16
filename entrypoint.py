@@ -1,13 +1,16 @@
-from constants import actions
+from constants import actions, queries
 
 
-def foo_generator():
-    for action in actions:
-        yield input("%s? " % action)
+def input_generator():
+    for action, query in zip(actions, queries):
+        yield action, int(input('%s\n' % query))
 
 
 def main():
-    print(set(foo_generator()))
+    try:
+        print(dict(input_generator()))
+    except ValueError:
+        print("Please enter only integers.")
 
 
 if __name__ == '__main__':

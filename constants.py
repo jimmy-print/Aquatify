@@ -3,8 +3,11 @@
 # Things that consume water
 FLUSH = 'flush'
 SHOWER = 'shower'
-BATH = 'bath'
 DRINK = 'drink'
-LAUNDRY = 'laundry'
 
-actions = FLUSH, SHOWER, BATH, DRINK, LAUNDRY
+actions = FLUSH, SHOWER, DRINK
+queries = (
+    'How many times do you flush your toilet per day?',
+    'How much time do you usually spend in the shower?',
+    'How many litres of water do you drink per day?',
+)
