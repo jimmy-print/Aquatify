@@ -1,8 +1,14 @@
-from constants import *
+from constants import actions
+
+
+def foo_generator():
+    for action in actions:
+        yield input("%s? " % action)
+
 
 def main():
-    for action in actions:
-        input("%s? " % action)
+    print(set(foo_generator()))
+
 
 if __name__ == '__main__':
     main()
