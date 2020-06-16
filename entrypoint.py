@@ -1,3 +1,4 @@
+import data
 from constants import actions, queries
 
 
@@ -7,10 +8,12 @@ def input_generator():
 
 
 def main():
-    try:
-        print(dict(input_generator()))
-    except ValueError:
-        print("Please enter only integers.")
+    user = dict(input_generator())
+    for action in user:
+        if user[action] > data.optimal[action]:
+            print("%s is bad" % action)
+        else:
+            print("%s is good" % action)
 
 
 if __name__ == '__main__':
