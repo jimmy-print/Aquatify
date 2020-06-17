@@ -3,7 +3,7 @@ from data import actions
 
 def main():
     try:
-        [action.get_user_val() for action in actions]
+        [action.set_user_val_on_cmdline() for action in actions]
     except ValueError:
         print("format error")
         return

@@ -34,8 +34,11 @@ class UserAction:
     def _get_optimal_val(self):
         return optimal[self.action]
 
-    def get_user_val(self):
+    def set_user_val_on_cmdline(self):
         self.user_val = float(input("%s\n" % self.query))
+
+    def set_user_val(self, user_val):
+        self.user_val = float(user_val)
 
 
 actions = (
