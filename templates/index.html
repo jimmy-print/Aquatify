@@ -8,9 +8,8 @@
 
 <body>
     <h1 id="main-title">EFFICIENTIAM</h1>
-    <hr>
     <div class="grid">
-        <div class="left-fill"></div>
+        <div id="left-fill" class="fill"></div>
         <div class="about">
             <h1>About</h1>
             <p>Efficientiam dynamically interprets your water usage and
@@ -21,8 +20,8 @@
                 accurate and useful recommendations!</p>
         </div>
         <div class="main">
-            <h1 id="title">Let's get started!</h1>
-            <h2 id="title">First off, let's address your water consumption.</h2>
+            <h1 class="title">Let's get started!</h1>
+            <h2 class="title">First off, let's address your water consumption.</h2>
             <div class="questions">
                 <form method="GET">
                     <p>How many times do you flush your toilet per day?</p>
@@ -34,7 +33,7 @@
                     <p>How many litres of water do you drink per day?</p>
                     <input name="drink" type="text">
                     <br><br>
-                    <button>Send</button>
+                    <button>Calculate</button>
                 </form>
                 <p>Tomorrow..</p>
                 {% for advice in advices %}
@@ -42,7 +41,7 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="right-fill"></div>
+        <div id="right-fill" class="fill"></div>
     </div>
 </body>
 
