@@ -2,7 +2,7 @@ import flask
 from flask import Flask
 from flask import render_template
 
-import data
+from backend import data
 app = Flask(__name__)
 
 
