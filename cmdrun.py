@@ -1,4 +1,4 @@
-from data import actions
+from backend.data import actions
 
 
 def main():
