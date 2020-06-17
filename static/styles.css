@@ -1,0 +1,48 @@
+a {
+    color: blue
+}
+
+* {
+    font-family: 'Roboto';
+}
+
+
+#main-title {
+    text-align: center;
+    font-family: 'Oxygen';
+    letter-spacing: 2px;
+}
+
+.grid {
+    display: grid;
+    justify-content: center;
+    height: 100%;
+}
+
+.about {
+    grid-column: 1;
+    width: 400px;
+    margin-right: 10px;
+    background-color: white;
+}
+
+.main {
+    grid-column: 2;
+    width: 400px;
+    margin-left: 10px;
+    background-color: white;
+}
+
+button {
+    background-color: white;
+    border: 2px solid blue;
+    font-size: 30px;
+    border-radius: 5px
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+button:hover {
+    background-color: blue;
+    color: white;
+}

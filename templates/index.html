@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Efficientiam</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@700&family=Roboto&display=swap" rel="stylesheet"> </head>
+</head>
+
+<body>
+    <h1 id="main-title">EFFICIENTIAM</h1>
+    <hr>
+    <div class="grid">
+        <div class="left-fill"></div>
+        <div class="about">
+            <h1>About</h1>
+            <p>Efficientiam dynamically interprets your water usage and
+                intelligently recommends changes to reduce your ecological
+                footprint and overall water wastage. In the future, Efficientiam
+                will automatically begin to learn how you use water using
+                our advanced neural networks, and this will help provide more
+                accurate and useful recommendations!</p>
+        </div>
+        <div class="main">
+            <h1 id="title">Let's get started!</h1>
+            <h2 id="title">First off, let's address your water consumption.</h2>
+            <div class="questions">
+                <form method="GET">
+                    <p>How many times do you flush your toilet per day?</p>
+                    <input name="flush" type="text">
+                    <br>
+                    <p>How much time do you usually spend in the shower?</p>
+                    <input name="shower" type="text">
+                    <br>
+                    <p>How many litres of water do you drink per day?</p>
+                    <input name="drink" type="text">
+                    <br><br>
+                    <button>Send</button>
+                </form>
+                <p>Tomorrow..</p>
+                {% for advice in advices %}
+                    <li>{{advice}}</li>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="right-fill"></div>
+    </div>
+</body>
+
+</html>
