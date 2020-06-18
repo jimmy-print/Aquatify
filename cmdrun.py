@@ -9,7 +9,7 @@ def main():
         return
     for action in actions:
         if action.user_val > action.optimal:
-            print(action.advice_format.format(action.optimal))
+            print(action.advice)
 
 
 if __name__ == '__main__':

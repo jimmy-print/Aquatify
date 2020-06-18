@@ -23,7 +23,7 @@ def home():
         else:
             for action in data.actions:
                 if action.user_val > action.optimal:
-                    advices.append(action.advice_format.format(action.optimal))
+                    advices.append(action.advice)
     return render_template("index.html", advices=advices)
 
 

@@ -26,19 +26,23 @@ class UserAction:
     def __init__(self, action, query, advice_format, unit):
         self.action = action
         self.user_val = None
-        self.optimal = self._get_optimal_val()
         self.query = query
         self.advice_format = advice_format
         self.unit = unit
-
-    def _get_optimal_val(self):
-        return optimal[self.action]
 
     def set_user_val_on_cmdline(self):
         self.user_val = float(input("%s\n" % self.query))
 
     def set_user_val(self, user_val):
         self.user_val = float(user_val)
+
+    @property
+    def optimal(self):
+        return optimal[self.action]
+
+    @property
+    def advice(self):
+        return self.advice_format.format(self.optimal)
 
 
 actions = (
