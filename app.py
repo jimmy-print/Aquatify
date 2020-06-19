@@ -13,17 +13,21 @@ def home():
     # Ugly branching logic.
     for arg in args:
         if arg == "":
-            break
-    else:
-        for arg, action in zip(args, data.actions):
-            try:
-                action.set_user_val(arg)
-            except ValueError:
-                break;
-        else:
-            for action in data.actions:
-                if action.user_val > action.optimal:
-                    advices.append(action.advice)
+            return render_template("index.html", advices=())
+    for arg, action in zip(args, data.actions):
+        try:
+            action.set_user_val(arg)
+        except ValueError:
+            return render_template("index.html", advices=())
+
+    fine = True
+    for action in data.actions:
+        if action.user_val > action.optimal:
+            advices.append(action.advice)
+            fine = False
+    if fine:
+        advices = ("You're okay!",)
+
     return render_template("index.html", advices=advices)
 
 
