@@ -9,16 +9,21 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     args = tuple(get_args())
-    advices = []
     # Ugly branching logic.
+    if args == ():
+        return render_template("index.html", advices=(), actions=data.actions)
+    
+    advices = []
+    
     for arg in args:
         if arg == "":
-            return render_template("index.html", advices=())
+            return render_template("index.html", advices=(), actions=data.actions)
+        
     for arg, action in zip(args, data.actions):
         try:
             action.set_user_val(arg)
         except ValueError:
-            return render_template("index.html", advices=())
+            return render_template("index.html", advices=(), actions=data.actions)
 
     fine = True
     for action in data.actions:
@@ -28,7 +33,7 @@ def home():
     if fine:
         advices = ("You're okay!",)
 
-    return render_template("index.html", advices=advices)
+    return render_template("index.html", advices=advices, actions=data.actions)
 
 
 @app.route('/about')
@@ -37,12 +42,7 @@ def about():
 
 
 def get_args():
-    args = [
-        flask.request.args.get("flush"),
-        flask.request.args.get("shower"),
-        flask.request.args.get("drink"),
-    ]
-    for i, arg in enumerate(args):
+    for i, arg in enumerate(flask.request.args.values()):
         if arg is None:
             yield ""
         yield arg

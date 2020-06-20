@@ -11,7 +11,8 @@ LITRES = 'litres'
 
 
 class UserAction:
-    def __init__(self, query: str, advice_format: str, optimal, unit):
+    def __init__(self, name: str, query: str, advice_format: str, optimal, unit):
+        self.name = name
         self.user_val = None
         self.query = query
         self.advice_format = advice_format
@@ -36,13 +37,16 @@ class UserAction:
 # https://www.thefinder.com.sg/healthy-living/fitness/how-much-water-must-you-actually-drink-singapores-insane-hot/
 
 actions = (
-    UserAction('How many times do you flush your toilet per day?',
+    UserAction(FLUSH,
+                'How many times do you flush your toilet per day?',
                'Try flushing the toilet {} times tomorrow.',
                8, TIMES),
-    UserAction('How much time do you usually spend in the shower?',
+    UserAction(SHOWER,
+                'How much time do you usually spend in the shower?',
                'Shorten your shower time to {} minutes in the future.',
                5, MINUTES),
-    UserAction('How many litres of water do you drink per day?',
+    UserAction(DRINK,
+                'How many litres of water do you drink per day?',
                'Unless you perspire a lot, drink {} litres of water tomorrow.',
                2.25, LITRES),
 )

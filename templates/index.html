@@ -24,14 +24,10 @@
             <h2 class="title">First off, let's address your water consumption.</h2>
             <div class="questions">
                 <form method="GET" autocomplete="off">
-                    <p>How many times do you flush your toilet per day?</p>
-                    <input name="flush" type="text">
-                    <br>
-                    <p>How much time do you usually spend in the shower?</p>
-                    <input name="shower" type="text">
-                    <br>
-                    <p>How many litres of water do you drink per day?</p>
-                    <input name="drink" type="text">
+                    {% for action in actions %}
+                    <p>{{action.query}}</p>
+                    <input name="{{action.name}}" type="text">
+                    {% endfor %}
                     <br><br>
                     <button>Calculate</button>
                 </form>
