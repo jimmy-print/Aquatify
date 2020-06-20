@@ -6,7 +6,7 @@ from backend import data
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
     args = tuple(get_args())
     # Ugly branching logic.
@@ -42,7 +42,7 @@ def about():
 
 
 def get_args():
-    for arg in flask.request.args.values():
+    for arg in flask.request.form.values():
         if arg is None:
             yield ""
         yield arg
