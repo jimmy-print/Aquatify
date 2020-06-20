@@ -42,7 +42,7 @@ def about():
 
 
 def get_args():
-    for i, arg in enumerate(flask.request.args.values()):
+    for arg in flask.request.args.values():
         if arg is None:
             yield ""
         yield arg
