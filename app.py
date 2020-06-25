@@ -15,9 +15,8 @@ def home():
     
     advices = []
     
-    for arg in args:
-        if arg == "":
-            return render_template("index.html", advices=(), actions=data.actions)
+    if "" in args:
+        return render_template("index.html", advices=(), actions=data.actions)
         
     for arg, action in zip(args, data.actions):
         try:
