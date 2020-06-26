@@ -36,7 +36,7 @@ class UserAction:
 # https://www.pub.gov.sg/Documents/PUB_7%20Good%20water%20saving%20habits_FA_LORES.pdf
 # https://www.thefinder.com.sg/healthy-living/fitness/how-much-water-must-you-actually-drink-singapores-insane-hot/
 
-actions = (
+actions = {
     UserAction(FLUSH,
                 'How many times do you flush your toilet per day?',
                'Try flushing the toilet {} times tomorrow.',
@@ -49,4 +49,4 @@ actions = (
                 'How many litres of water do you drink per day?',
                'Unless you perspire a lot, drink {} litres of water tomorrow.',
                2.25, LITRES),
-)
+}
