@@ -27,6 +27,7 @@
                     {% for action in actions %}
                     <p>{{action.query}}</p>
                     <input name="{{action.name}}" type="text">
+                    {{action.unit}}
                     {% endfor %}
                     <br><br>
                     <button>Calculate</button>
