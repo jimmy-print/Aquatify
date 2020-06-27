@@ -6,3 +6,4 @@ or,
 
 TODO
 - Make suggestions more specific
+- Read actions from structured file
