@@ -2,7 +2,7 @@ import flask
 from flask import Flask
 from flask import render_template
 
-from backend import data
+from backend.read import actions
 app = Flask(__name__)
 
 
@@ -11,28 +11,28 @@ def home():
     args = tuple(get_args())
     # Ugly branching logic.
     if args == ():
-        return render_template("index.html", advices=(), actions=data.actions)
+        return render_template("index.html", advices=(), actions=actions)
     
     advices = []
     
     if "" in args:
-        return render_template("index.html", advices=(), actions=data.actions)
+        return render_template("index.html", advices=(), actions=actions)
         
-    for arg, action in zip(args, data.actions):
+    for arg, action in zip(args, actions):
         try:
             action.set_user_val(arg)
         except ValueError:
-            return render_template("index.html", advices=(), actions=data.actions)
+            return render_template("index.html", advices=(), actions=actions)
 
     fine = True
-    for action in data.actions:
+    for action in actions:
         if action.user_val > action.optimal:
             advices.append(action.advice)
             fine = False
     if fine:
         advices = ("You're okay!",)
 
-    return render_template("index.html", advices=advices, actions=data.actions)
+    return render_template("index.html", advices=advices, actions=actions)
 
 
 @app.route('/about')
