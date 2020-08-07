@@ -6,4 +6,5 @@ or,
 
 TODO
 - Make suggestions more specific
-- Read actions from structured file
+- Write more suggestions
+- Allow skipping of some questions in the web page
