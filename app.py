@@ -11,18 +11,18 @@ def home():
     args = tuple(get_args())
     # Ugly branching logic.
     if args == ():
-        return render_template("index.html", advices=(), actions=actions)
+        return render_template('index.html', advices=(), actions=actions)
     
     advices = []
     
-    if "" in args:
-        return render_template("index.html", advices=(), actions=actions)
+    if '' in args:
+        return render_template('index.html', advices=(), actions=actions)
         
     for arg, action in zip(args, actions):
         try:
             action.set_user_val(arg)
         except ValueError:
-            return render_template("index.html", advices=(), actions=actions)
+            return render_template('index.html', advices=(), actions=actions)
 
     fine = True
     for action in actions:
@@ -30,22 +30,22 @@ def home():
             advices.append(action.advice)
             fine = False
     if fine:
-        advices = ("You're okay!",)
+        advices = ('You\'re okay!',)
 
-    return render_template("index.html", advices=advices, actions=actions)
+    return render_template('index.html', advices=advices, actions=actions)
 
 
 @app.errorhandler(404)
 def func404(e):
-    return render_template("404.html")
+    return render_template('404.html')
 
 
 def get_args():
     for arg in flask.request.form.values():
         if arg is None:
-            yield ""
+            yield ''
         yield arg
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(host='127.0.0.1', debug=True)

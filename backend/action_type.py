@@ -8,7 +8,7 @@ class UserAction:
         self.unit = unit
 
     def set_user_val_on_cmdline(self):
-        self.user_val = float(input("%s\n" % self.query))
+        self.user_val = float(input('%s\n' % self.query))
 
     def set_user_val(self, user_val):
         self.user_val = float(user_val)

@@ -5,7 +5,7 @@ def main():
     try:
         [action.set_user_val_on_cmdline() for action in actions]
     except ValueError:
-        print("format error")
+        print('format error')
         return
     for action in actions:
         if action.user_val > action.optimal:
