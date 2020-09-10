@@ -13,7 +13,7 @@
   },
   "drink": {
     "query": "How many litres of water do you drink per day?",
-    "advice_format": "Unless you perspire a lot, drink {} litres of water tomorrow.",
+    "advice_format": "Unless you sweat a lot, drink {} litres of water tomorrow.",
     "optimal": 2.25,
     "unit": "litres"
   }
