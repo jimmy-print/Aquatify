@@ -15,15 +15,19 @@ def home():
     
     advices = []
     
+    # If one or more of the input boxes were empty
     if '' in args:
-        return render_template('index.html', advices=(), actions=actions)
-        
+        return render_template("index.html", advices=(), actions=actions)
+
     for arg, action in zip(args, actions):
         try:
             action.set_user_val(arg)
         except ValueError:
-            return render_template('index.html', advices=(), actions=actions)
+            # If there was invalid data in the input boxes
+            # eg. letters, special characters
+            return render_template("index.html", advices=(), actions=actions)
 
+    # Determine if the user needs advice(s) 
     fine = True
     for action in actions:
         if action.user_val > action.optimal:
