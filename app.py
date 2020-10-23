@@ -9,13 +9,12 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     args = tuple(get_args())
-    # Ugly branching logic.
     if args == ():
         return render_template('index.html', advices=(), actions=actions)
     
     advices = []
     
-    # If one or more of the input boxes were empty
+    # If one or more of the input boxes were empty, then return no feedback
     if '' in args:
         return render_template("index.html", advices=(), actions=actions)
 
@@ -27,13 +26,13 @@ def home():
             # eg. letters, special characters
             return render_template("index.html", advices=(), actions=actions)
 
-    # Determine if the user needs advice(s) 
-    fine = True
+    # Determine if the user needs advice(s)
+    no_advices = True
     for action in actions:
         if action.user_val > action.optimal:
             advices.append(action.advice)
-            fine = False
-    if fine:
+            no_advices = False
+    if no_advices:
         advices = ('You\'re okay!',)
 
     return render_template('index.html', advices=advices, actions=actions)

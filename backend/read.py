@@ -1,6 +1,9 @@
 import json
 import os
-from . import action_type
+try:
+    from . import action_type
+except ImportError:
+    import action_type
 
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'actions.json')) as f:
     json_dict = json.loads(f.read())
@@ -18,3 +21,6 @@ def get_actions():
 
 
 actions = tuple(get_actions())
+
+if __name__ == '__main__':
+    [print(action.name) for action in actions]
