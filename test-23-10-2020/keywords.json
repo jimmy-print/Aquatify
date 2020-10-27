@@ -1,6 +1,6 @@
 {
   "drink-water": [
-    "litres", "drink", "gallons", "cups", "bottles"
+    "litres", "liters", "drink", "gallons", "cups", "bottles"
   ],
   "shower": [
     "shower", "spend", "stay", "minutes"
