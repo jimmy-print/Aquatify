@@ -1,9 +1,8 @@
+import json
 
-
-def main():
+def return_action_type(sentence):
     with open('keywords.json') as f:
         keywords = json.loads(f.read())
-    sentence = input('Enter in anything related to your daily water consumption.\n')
 
     frequency = {}
 
@@ -27,6 +26,4 @@ def main():
         pass
         # todo problem reverse lookup dict since no duplicate(s) of the frequency values exist(s)
 
-
-if __name__ == '__main__':
-    main()
+    return frequency
