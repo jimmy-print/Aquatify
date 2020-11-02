@@ -1,11 +1,11 @@
 {
   "drink-water": [
-    "litres", "liters", "drink", "gallons", "cups", "bottles"
+    "litres", "liters", "drink", "gallons", "cups", "bottles", "drinks"
   ],
   "shower": [
-    "shower", "spend", "stay", "minutes"
+    "shower", "spend", "stay", "minutes", "showers"
   ],
   "toilet-flush": [
-    "toilet", "flush", "times", "go", "to"
+    "toilet", "flush", "times", "go", "to", "flushes"
   ]
 }
