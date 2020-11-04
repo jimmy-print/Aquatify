@@ -27,3 +27,14 @@ def return_action_type(sentence):
         # todo problem reverse lookup dict since no duplicate(s) of the frequency values exist(s)
 
     return frequency
+
+def return_num(sentence):
+    words = sentence.split()
+    have = False
+    for word in words:
+        try:
+            int(word)
+            have = True
+        except ValueError:
+            pass
+    print(have)
