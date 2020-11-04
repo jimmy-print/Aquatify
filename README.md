@@ -1,13 +1,5 @@
 # Aquatify
-    python3 cmdrun.py
-or,
-
-    python3 app.py  # flask app on localhost
-
-### Todo
-- Make suggestions more specific
-- Write more suggestions
-- Allow skipping of some questions in the web page
+    python3 app.py 
 
 ### Idea 23/10/2020
 The user types in any sentence related to their consumption of water,

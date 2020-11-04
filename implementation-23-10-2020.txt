@@ -1,18 +1,3 @@
-user types in sentence for example
-i flush the toilet 5 times
-
-passed to server
-it scans the sentence for keywords
-example_keyword_list = 'toilet', 'urinal', 'drink', 'flush', 'litres', 'times'...
-
-in this sentence we match toilet, flush, and times
-thus we can predict what the user is probably indicating, through these combinations
-toilet + flush => toilet flush data type, predict unit will be times
-times match keywords, 99% (or whatever) probability that user is indicating about toilet flushes and unit is times
-
-statistical model will be interesting, since we will have to build connections between keywords and calculate
-the possibility that a sentence belongs to one or the other.
-
 we could also build a model for each user that visits our site and sends in their sentence
 the first thing that comes to mind is simply counting the amount of a particular word that they use a lot in their
 writing

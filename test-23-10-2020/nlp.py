@@ -1,6 +1,6 @@
 import json
 
-def return_action_type(sentence):
+def figure(sentence):
     with open('keywords.json') as f:
         keywords = json.loads(f.read())
 
@@ -19,11 +19,11 @@ def return_action_type(sentence):
     for val in frequency.values():
         if val == m:
             count += 1
-    print(frequency.values())
-    if count > 1:
-        print('duplicate(s) exists, ambiguous')
-    else:
-        pass
-        # todo problem reverse lookup dict since no duplicate(s) of the frequency values exist(s)
 
-    return frequency
+    if count > 1:
+        raise RuntimeError(f'{frequency}') 
+
+    keys = tuple(frequency.keys())
+    vals = tuple(frequency.values())
+
+    return keys[vals.index(m)]
