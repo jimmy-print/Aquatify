@@ -1,6 +1,6 @@
 import json
 
-def figure(sentence):
+def get_type(sentence):
     with open('keywords.json') as f:
         keywords = json.loads(f.read())
 
@@ -21,9 +21,18 @@ def figure(sentence):
             count += 1
 
     if count > 1:
-        raise RuntimeError(f'{frequency}') 
+        raise RuntimeError(f'{frequency}')
 
     keys = tuple(frequency.keys())
     vals = tuple(frequency.values())
 
     return keys[vals.index(m)]
+
+
+def get_num(sentence):
+    words = sentence.split()
+    for word in words:
+        try:
+            return int(word)
+        except ValueError:
+            pass

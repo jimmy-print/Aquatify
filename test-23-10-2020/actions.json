@@ -1,0 +1,11 @@
+{
+  "drink-water": {
+    "optimal": 2.25
+  },
+  "shower": {
+    "optimal": 5
+  },
+  "toilet-flush": {
+    "optimal": 8
+  }
+}
