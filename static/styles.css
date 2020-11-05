@@ -1,59 +1,35 @@
-body {
-    font-family: 'Roboto';
-    overflow-y: scroll;
-}
-
-#main-title {
-    text-align: center;
-    font-family: 'Oxygen';
-    letter-spacing: 2px;
-    cursor: pointer;
-}
-
-.grid {
-    display: grid;
-    justify-content: center;
-    height: 1000px;
+#background {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5e/Water_drop_001.jpg');
+    height: 100%;
     width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
 }
 
-#left-fill {
-    grid-column: 1;
-    width: 400px;
+body {
+    margin: 0px;
+    color: white;
+    font-family: Georgia;
 }
 
-#right-fill {
-    grid-column: 4;
-    width: 400px;
+h1 {
+    margin-top: 0px;
+    font-size: 200%;
+    padding-top: 2%;
 }
 
-.fill {
-    background-color: #f9f9f9;;
-}
-
-.about {
-    grid-column: 2;
-    width: 400px;
-    margin-left: 10px;
-    margin-right: 10px;
-    background-color: white;
-}
-
-.main {
-    grid-column: 3;
-    width: 400px;
-    margin-left: 10px;
-    margin-right: 10px;
-    background-color: white;
+#input {
+    margin-top: 17%;
 }
 
 input {
-
+    margin-top: 10px;
+    width: 500px;
 }
 
-button {
-    background-color: white;
-    font-size: 30px;
-    border-radius: 5px;
-    transition-duration: 0.3s;
+#expo-text {
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
 }

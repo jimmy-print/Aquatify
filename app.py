@@ -1,54 +1,36 @@
 import flask
-from flask import Flask
-from flask import render_template
+import json
+import nlp
 
-from backend.read import actions
-app = Flask(__name__)
-
+app = flask.Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    args = tuple(get_args())
-    if args == ():
-        return render_template('index.html', advices=(), actions=actions)
-    
-    advices = []
-    
-    # If one or more of the input boxes were empty, then return no feedback
-    if '' in args:
-        return render_template("index.html", advices=(), actions=actions)
+    gen = flask.request.form.values()
+    try:
+        anything = tuple(gen)[0]
+        action_type = nlp.get_type(anything)
+        num = nlp.get_num(anything)
 
-    for arg, action in zip(args, actions):
-        try:
-            action.set_user_val(arg)
-        except ValueError:
-            # If there was invalid data in the input boxes
-            # eg. letters, special characters
-            return render_template("index.html", advices=(), actions=actions)
+        with open('actions.json') as f:
+            d = json.loads(f.read())
+        optimal = d[action_type]['optimal']
 
-    # Determine if the user needs advice(s)
-    no_advices = True
-    for action in actions:
-        if action.user_val > action.optimal:
-            advices.append(action.advice)
-            no_advices = False
-    if no_advices:
-        advices = ('You\'re okay!',)
+        if num <= optimal:
+            return flask.render_template('index.html', advice='Good')
+        else:
+            return flask.render_template('index.html', advice='Bad')
+    except IndexError:
+        # nothing in post
+        pass
+    except RuntimeError as e:
+        print('error', anything, e)
+        return flask.render_template('index.html', advice='We could not understand your input.')
+    except TypeError as e:
+        print('error', anything, e)
+        return flask.render_template('index.html', advice='We could not understand your input.')
 
-    return render_template('index.html', advices=advices, actions=actions)
-
-
-@app.errorhandler(404)
-def func404(e):
-    return render_template('404.html')
-
-
-def get_args():
-    for arg in flask.request.form.values():
-        if arg is None:
-            yield ''
-        yield arg
-
+    return flask.render_template('index.html', advice='')
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', debug=True)
+    app.run(host='127.0.0.1')

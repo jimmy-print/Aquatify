@@ -1,40 +1,20 @@
-<!DOCTYPE html>
+<html>
 
 <head>
-    <title>Efficientiam</title>
     <link rel="stylesheet" href="static/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@700&family=Roboto&display=swap" rel="stylesheet"> </head>
 </head>
 
 <body>
-    <h1 id="main-title" onclick="window.location.href = '/'">AQUATIFY</h1>
-    <div class="grid">
-        <div id="left-fill" class="fill"></div>
-        <div class="about">
-            <h1>About</h1>
-            <p>Aquatify dynamically interprets your water usage and
-                intelligently recommends changes to reduce your ecological
-                footprint and overall water wastage.</p>
+    <div id="background">
+        <h1>Aquatify</h1>
+        <div id="input">
+            <label id="expo-text">Enter anything related to your water consumption.</label>
+            <br>
+            <form method="POST" autocomplete="off">
+                <input name="anything"></input>
+            </form>
+            <label id="expo-text">{{advice}}</label>
         </div>
-        <div class="main">
-            <h1 class="title">Let's get started</h1>
-            <div class="questions">
-                <form method="POST" autocomplete="off">
-                    {% for action in actions %}
-                    <p>{{action.query}}</p>
-                    <input name="{{action.name}}" type="text">
-                    {{action.unit}}
-                    {% endfor %}
-                    <br><br>
-                    <button>Calculate</button>
-                </form>
-                <p>Tomorrow..</p>
-                {% for advice in advices %}
-                    <li>{{advice}}</li>
-                {% endfor %}
-            </div>
-        </div>
-        <div id="right-fill" class="fill"></div>
     </div>
 </body>
 
