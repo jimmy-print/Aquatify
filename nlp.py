@@ -21,7 +21,7 @@ def get_type(sentence):
             count += 1
 
     if count > 1:
-        raise RuntimeError(f'{frequency}')
+        raise RuntimeError(f'ambiguous frequency {frequency}')
 
     keys = tuple(frequency.keys())
     vals = tuple(frequency.values())
@@ -36,3 +36,5 @@ def get_num(sentence):
             return int(word)
         except ValueError:
             pass
+
+    raise ValueError('no number')
