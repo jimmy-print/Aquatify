@@ -4,7 +4,8 @@ import nlp
 import logging
 
 app = flask.Flask(__name__)
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(
+    level=logging.DEBUG)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -36,6 +37,21 @@ def home():
         return flask.render_template('index.html', advice='')
     except AssertionError:
         return flask.render_template('index.html', advice='')
+
+@app.route('/crowdsource', methods=['GET', 'POST'])
+def crowd():
+    anything = tuple(flask.request.form.values())[0] if len(tuple(flask.request.form.values())) == 1 else None
+
+    if anything is not None:
+        append(anything)
+
+    return flask.render_template('crowd.html')
+
+CROWDFILE = 'crowd.txt'
+def append(s):
+    with open(CROWDFILE, 'a') as f:
+        f.write(s)
+        f.write('\n')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1')
