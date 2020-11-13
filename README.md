@@ -7,6 +7,3 @@
 
 ## Quick start guide for Aquatify's source
 Run ```python3 app.py``` or ```flask run --host 0.0.0.0```
-
-## Credits
-José Manuel Suárez, CC BY 2.0 <https://creativecommons.org/licenses/by/2.0>, via Wikimedia Commons
