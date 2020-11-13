@@ -1,4 +1,4 @@
-![](/templates/logos/right-side-icon-text.png)
+![](/static/logos/right-side-icon-text.png)
 
 ## https://aquatify.cc
 
