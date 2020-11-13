@@ -1,9 +1,9 @@
 {
   "drink-water": [
-    "litres", "liters", "mililiters", "drink", "gallons", "cups", "bottles", "drinking", "cup", "glass", "refreshment", "sip", "gulp", "swallow", "taste", "quench"
+    "litres", "liters", "mililiters", "drink", "gallons", "cups", "bottles", "drinking", "cup", "glass", "glasses", "refreshment", "sip", "sips", "gulp", "gulps", "swallow", "taste", "quench"
   ],
   "shower": [
-    "shower", "spend", "stay", "minutes", "showers", "take", "clean", "bathe", "cleanse", "clear up", "disinfect", "dredge", "dust", "rinse", "scrape", "scrub", "soak", "wash"
+    "shower", "spend", "stay", "minutes", "showers", "take", "clean", "cleaned", "bathe", "cleanse", "clear up", "disinfect", "dredge", "dust", "rinse", "scrape", "scrub", "soak", "wash"
   ],
   "toilet-flush": [
     "toilet", "bathroom", "outhouse", "restroom", "flush", "times", "go", "to", "eject", "urinal", "toilet bowl", "squat"
