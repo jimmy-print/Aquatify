@@ -14,18 +14,19 @@ def home():
         anything = tuple(gen)[0]
         assert anything != ''
         action_type = nlp.get_type(anything)
-        num = nlp.get_num(anything)
+        num = (nlp.get_num(anything))
 
         with open('actions.json') as f:
             d = json.loads(f.read())
-        optimal = d[action_type]['optimal']
+        optimal = (d[action_type]['optimal'])
+
 
         if num <= optimal:
             logging.info('input: %s -> %s', anything, 'good')
-            return flask.render_template('index.html', advice='Good')
+            return flask.render_template('index.html', advice='Good', desc="Your consumption is not too much!")
         else:
             logging.info('input: %s -> %s', anything, 'bad')
-            return flask.render_template('index.html', advice='Bad')
+            return flask.render_template('index.html', advice='Bad', desc="Reduce your consumption by "+str(float(num) - float(optimal)))
     except RuntimeError as e:
         logging.warning('input: %s -> %s', anything, e)
         return flask.render_template('index.html', advice='We could not understand your input.')
