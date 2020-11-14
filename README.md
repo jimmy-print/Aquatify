@@ -6,4 +6,4 @@
 *A free online web application that collects user data/information and then provides clear insight into how to adjust daily human consumption of water to optimal amounts to reduce environmental impacts.*
 
 ## Quick start guide for Aquatify's source
-Run ```python3 app.py``` or ```flask run --host 0.0.0.0```
+Run ```python3 application.py``` or ```flask run --host 0.0.0.0```
