@@ -33,7 +33,7 @@ def get_num(sentence):
     words = sentence.split()
     for word in words:
         try:
-            return int(word)
+            return float(word)
         except ValueError:
             pass
 
