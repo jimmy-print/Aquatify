@@ -1,7 +1,7 @@
 import json
 
 def get_type(sentence):
-    with open('keywords.json') as f:
+    with open('data/keywords.json') as f:
         keywords = json.loads(f.read())
 
     frequency = {}

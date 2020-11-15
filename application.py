@@ -16,7 +16,7 @@ def home():
         action_type = nlp.get_type(anything)
         num = (nlp.get_num(anything))
 
-        with open('actions.json') as f:
+        with open('data/actions.json') as f:
             d = json.loads(f.read())
         optimal = (d[action_type]['optimal'])
 
