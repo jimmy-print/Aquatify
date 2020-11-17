@@ -1,6 +1,8 @@
 import json
+import os
 
 def get_type(sentence):
+    print(os.path.abspath('.'))
     with open('data/keywords.json') as f:
         keywords = json.loads(f.read())
 
