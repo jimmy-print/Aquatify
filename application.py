@@ -11,6 +11,12 @@ logging.basicConfig(
 def home():
     gen = flask.request.form.values()
     try:
+        # Nginx request IP
+        logging.debug('IP: %s', flask.request.environ['HTTP_X_REAL_IP'])
+    except KeyError as e:
+        # Flask HTTP server doesn't have HTTP_X_REAL_IP as a header
+        logging.debug('IP: %s (likely testing on flask server)', flask.request.environ['REMOTE_ADDR'])
+    try:
         anything = tuple(gen)[0]
         assert anything != ''
         action_type = nlp.get_type(anything)
