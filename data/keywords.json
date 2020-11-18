@@ -10,7 +10,7 @@
 			"scrape", "scrub", "soak", "wash"
   ],
   "toilet-flush": [
-			"toilet", "bathroom", "outhouse", "restroom", "flush", "go", "to", "eject",
+			"toilet", "bathroom", "outhouse", "restroom", "flush", "eject",
 			"urinal", "toilet bowl", "squat", "poop", "piss", "pee"
   ]
 }
