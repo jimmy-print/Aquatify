@@ -33,16 +33,16 @@ def home():
 
 
         if num <= optimal:
-            logging.info('IP:'+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, 'good')
+            logging.info('['+(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+'] '+'IP: '+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, 'good')
             return flask.render_template('index.html', advice='Good', desc="Your consumption is not too much!")
         else:
-            logging.info('IP:'+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, 'bad')
+            logging.info('['+(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+'] '+'IP: '+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, 'bad')
             return flask.render_template('index.html', advice='Bad', desc="Reduce your consumption by "+str(float(num) - float(optimal)))
     except RuntimeError as e:
-        logging.warning('IP:'+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, e)
+        logging.warning('['+(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+'] '+'IP: '+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, e)
         return flask.render_template('index.html', advice='We could not understand your input.')
     except ValueError as e:
-        logging.warning('IP:'+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, e)
+        logging.warning('['+(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+'] '+'IP: '+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, e)
         return flask.render_template('index.html', advice='We could not understand your input.')
     except IndexError:
         # nothing in post
