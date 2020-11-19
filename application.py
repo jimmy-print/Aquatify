@@ -2,6 +2,7 @@ import flask
 import json
 import nlp
 import logging
+from time import gmtime, strftime
 
 app = flask.Flask(__name__)
 logging.basicConfig(
@@ -12,10 +13,14 @@ def home():
     gen = flask.request.form.values()
     try:
         # Nginx request IP
-        logging.debug('IP: %s', flask.request.environ['HTTP_X_REAL_IP'])
+        with open('./IP-log.txt', mode='a', encoding='utf-8') as logfile:
+            logfile.write('['+(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+'] '+str((flask.request.environ['HTTP_X_REAL_IP'])))
+            logfile.write('\n')
     except KeyError as e:
         # Flask HTTP server doesn't have HTTP_X_REAL_IP as a header
-        logging.debug('IP: %s (likely testing on flask server)', flask.request.environ['REMOTE_ADDR'])
+        with open('./IP-log.txt', mode='a', encoding='utf-8') as logfile:
+            logfile.write('['+(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+'] '+str((flask.request.environ['REMOTE_ADDR'])))
+            logfile.write('\n')
     try:
         anything = tuple(gen)[0]
         assert anything != ''
@@ -28,10 +33,10 @@ def home():
 
 
         if num <= optimal:
-            logging.info('input: %s -> %s', anything, 'good')
+            logging.info('IP:'+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, 'good')
             return flask.render_template('index.html', advice='Good', desc="Your consumption is not too much!")
         else:
-            logging.info('input: %s -> %s', anything, 'bad')
+            logging.info('IP:'+str(flask.request.environ['HTTP_X_REAL_IP'])+' | input detected: %s -> %s', anything, 'bad')
             return flask.render_template('index.html', advice='Bad', desc="Reduce your consumption by "+str(float(num) - float(optimal)))
     except RuntimeError as e:
         logging.warning('input: %s -> %s', anything, e)
