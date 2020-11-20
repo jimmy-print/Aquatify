@@ -42,7 +42,7 @@ def home():
             return flask.render_template('index.html', advice='Poor', desc=f"Reduce your water consumption by "+str(float(num) - float(optimal))+" "+unit)
     except RuntimeError as e:
         logging.info(' IP: '+IP+' | input detected: %s -> %s', anything, e)
-        return flask.render_template('index.html', advice='We could not understand your input.')
+        return flask.render_template('index.html', advice='Please rephrase your input.')
     except IndexError:
         # nothing in post
         return flask.render_template('index.html', advice='')
