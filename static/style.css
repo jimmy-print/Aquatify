@@ -207,12 +207,16 @@ button:hover {
     margin-top: 20px;
 }
 
-.aq-workinghny-form p.copy-footer-29 a {
+.aq-workinghny-form p.copy-footer a {
     color: #495057;
 }
 
-.aq-workinghny-form p.copy-footer-29 a:hover {
+.aq-workinghny-form p.copy-footer a:hover {
     color: #4361ee;
+}
+
+.aq-workinghny-form p.github-footer a {
+    color: #1877F2;
 }
 
 .aq-workinghny-form h2 {
