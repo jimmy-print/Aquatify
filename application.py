@@ -8,19 +8,24 @@ app = flask.Flask(__name__)
 logging.basicConfig(
     level=logging.DEBUG)
 
+def log_ip(IP):
+    with open('./IP-log.txt', mode='a', encoding='utf-8') as f:
+        f.write('[{}] {}'.format(strftime("%Y-%m-%d %H:%M:%S", gmtime()), IP))
+        f.write('\n')
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     gen = flask.request.form.values()
+    IP = None
     try:
         # Nginx request IP
-        with open('./IP-log.txt', mode='a', encoding='utf-8') as logfile:
-            logfile.write('['+(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+'] '+str((flask.request.environ['HTTP_X_REAL_IP'])))
-            logfile.write('\n')
+        IP = flask.request.environ['HTTP_X_REAL_IP']
     except KeyError as e:
         # Flask HTTP server doesn't have HTTP_X_REAL_IP as a header
-        with open('./IP-log.txt', mode='a', encoding='utf-8') as logfile:
-            logfile.write('['+(strftime("%Y-%m-%d %H:%M:%S", gmtime()))+'] '+str((flask.request.environ['REMOTE_ADDR'])))
-            logfile.write('\n')
+        IP = flask.request.environ['REMOTE_ADDR']
+
+    log_ip(IP)
+
     try:
         anything = tuple(gen)[0]
         assert anything != ''
