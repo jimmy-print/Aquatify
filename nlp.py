@@ -1,40 +1,99 @@
 import json
 
-def get_type(sentence):
-    with open('data/keywords.json') as f:
-        keywords = json.loads(f.read())
+with open('data/new.json') as f:
+    d = json.load(f)
 
-    frequency = {}
+def _get_all_keywords(action_type):
+    dd = d[action_type]
+    for unit in dd:
+        for word in dd[unit]['keywords']:
+            yield word
 
-    for consume_type in keywords:
-        count = 0
-        for keyword in keywords[consume_type]:
-            for word in sentence.split():
+def _get_keywords_for_action_type(action_type):
+    dd = d[action_type]
+    out = {}
+    for unit in dd:
+        if unit != 'generic':
+            out[unit] = dd[unit]['keywords']
+    return out
+
+def get_type(s):
+    freq = {}
+    for action_type in d.keys(): 
+        tmp = 0
+        for keyword in _get_all_keywords(action_type):
+            for word in s.split():
                 if word == keyword:
-                    count += 1
-        frequency[consume_type] = count
+                    tmp += 1
+        freq[action_type] = tmp
 
-    m = max(frequency.values())
+    m = max(freq.values())
+    
+    if len(freq.values()) == 1 and m == 0:
+        raise RuntimeError(f'only 1 action_type exists and its frequency is 0 {freq}')
+
     count = 0
-    for val in frequency.values():
+    for val in freq.values():
         if val == m:
             count += 1
 
-    if count > 1:
-        raise RuntimeError(f'ambiguous frequency {frequency}')
+    if count > 1 and m == 0:
+        raise RuntimeError(f'all action_types did not match {freq}')
 
-    keys = tuple(frequency.keys())
-    vals = tuple(frequency.values())
+    if count > 1:
+        raise RuntimeError(f'ambiguous action_type frequecy {freq}')
+
+    keys = tuple(freq.keys())
+    vals = tuple(freq.values())
 
     return keys[vals.index(m)]
 
+def get_unit(s, action_type):
+    freq = {}
+    for unit, keywords in _get_keywords_for_action_type(action_type).items():
+        tmp = 0
+        for word in s.split():
+            for keyword in keywords:
+                if word == keyword:
+                    tmp += 1
+        freq[unit] = tmp
 
-def get_num(sentence):
-    words = sentence.split()
-    for word in words:
+    m = max(freq.values())
+
+    if len(freq.values()) == 1 and m == 0:
+        raise RuntimeError(f'only 1 unit exists and its frequency is 0 {freq}')
+    
+    count = 0
+    for val in freq.values():
+        if val == m:
+            count += 1
+
+    if count > 1 and m == 0:
+        raise RuntimeError(f'all units did not match {freq}')
+
+    if count > 1:
+        raise RuntimeError(f'ambiguous units frequency {freq}')
+
+    keys = tuple(freq.keys())
+    vals = tuple(freq.values())
+
+    return keys[vals.index(m)]
+
+def get_type_num_unit(s):
+    action_type = get_type(s)
+    unit = get_unit(s, action_type)
+
+    num = None
+    for word in s.split():
         try:
-            return float(word)
+            num = float(word)
         except ValueError:
             pass
 
-    raise ValueError('no number')
+    if num is None:
+        raise RuntimeError('no number')
+
+    return action_type, num, unit
+
+def get_optimal(action_type, unit):
+    return d[action_type][unit]['optimal']

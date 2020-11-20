@@ -1,34 +1,49 @@
 {
-	"drink-water": {
-		"generic": {
-			"keywords": [
-				"drink", "drinking", "refreshment", "quench", "chug", "consume"
-			]
-		},
-		"liters": {
-			"keywords": [
-				"liter", "liters", "litre", "litres"
-			],
-			"optimal": 2.25
-		},
-		"glasses": {
-			"keywords": [
-				"glass", "glasses", "cups", "cup"
-			],
-			"optimal": 8
-		}
-	},
-	"shower": {
-		"generic": {
-			"keywords": [
-				"shower", "showers", "rinse"
-			]
-		},
-		"minutes": {
-			"keywords": [
-				"stay", "minute", "minutes"
-			],
-			"optimal": 5
-		}
-	}
+    "drink-water": {
+        "generic": {
+            "keywords": [
+                "drink",
+                "drinking",
+                "refreshment",
+                "quench",
+                "chug",
+                "consume"
+            ]
+        },
+        "liters": {
+            "keywords": [
+                "liter",
+                "liters",
+                "litre",
+                "litres"
+            ],
+            "optimal": 2.25
+        },
+        "glasses": {
+            "keywords": [
+                "glass",
+                "glasses",
+                "cups",
+                "cup"
+            ],
+            "optimal": 8
+        }
+    },
+    "shower": {
+        "generic": {
+            "keywords": [
+                "shower",
+                "showers",
+                "rinse"
+            ]
+        },
+        "minutes": {
+            "keywords": [
+                "stay",
+                "minute",
+                "minutes"
+            ],
+            "optimal": 5
+        }
+    }
 }

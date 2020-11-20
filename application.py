@@ -29,24 +29,18 @@ def home():
     try:
         anything = tuple(gen)[0]
         assert anything != ''
-        action_type = nlp.get_type(anything)
-        num = (nlp.get_num(anything))
 
-        with open('data/actions.json') as f:
-            d = json.loads(f.read())
-        optimal = (d[action_type]['optimal'])
+        action_type, num, unit = nlp.get_type_num_unit(anything)
 
+        optimal = nlp.get_optimal(action_type, unit)
 
         if num <= optimal:
             logging.info(' IP: '+IP+' | input detected: %s -> %s', anything, 'good')
             return flask.render_template('index.html', advice='Good', desc="Your water consumption is not too much!")
         else:
             logging.info(' IP: '+IP+' | input detected: %s -> %s', anything, 'bad')
-            return flask.render_template('index.html', advice='Bad', desc="Reduce your water consumption by "+str(float(num) - float(optimal)))
+            return flask.render_template('index.html', advice='Bad', desc="Reduce your water consumption by"+str(float(num) - float(optimal)))
     except RuntimeError as e:
-        logging.info(' IP: '+IP+' | input detected: %s -> %s', anything, e)
-        return flask.render_template('index.html', advice='We could not understand your input.')
-    except ValueError as e:
         logging.info(' IP: '+IP+' | input detected: %s -> %s', anything, e)
         return flask.render_template('index.html', advice='We could not understand your input.')
     except IndexError:
