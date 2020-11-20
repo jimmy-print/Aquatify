@@ -230,7 +230,7 @@ button:hover {
     align-items: center;
 }
 
-.aq-workinghny-form .login-form-content {
+.aq-workinghny-form .water-form-content {
     padding: 2em 0em;
 }
 
@@ -406,7 +406,7 @@ button:hover {
         grid-gap: 10px;
         width: 100%;
     }
-    .aq-workinghny-form .login-form-content {
+    .aq-workinghny-form .water-form-content {
         padding: 0em 0em 2em 0;
     }
     .workinghny-left-img {
