@@ -27,7 +27,18 @@
                 "cup"
             ],
             "optimal": 8
+        },
+        "mililiters": {
+            "keywords": [
+                "ml",
+                "mililiters",
+                "mililitres",
+                "mililiter",
+                "mililitre"
+            ],
+            "optimal": 2250
         }
+        
     },
     "shower": {
         "generic": {
@@ -41,9 +52,17 @@
             "keywords": [
                 "stay",
                 "minute",
+                "seconds",
+                "hours",
                 "minutes"
             ],
             "optimal": 5
+        },
+        "times": {
+            "keywords": [
+                "times"
+            ],
+            "optimal": 2
         }
     }
 }
