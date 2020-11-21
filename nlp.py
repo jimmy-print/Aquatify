@@ -17,9 +17,6 @@ def _get_keywords_for_action_type(action_type):
             out[unit] = dd[unit]['keywords']
     return out
 
-def _maximum(freq):
-    raise NotImplementedError('not implemented')
-
 def get_type(s):
     freq = {}
     for action_type in d.keys(): 
@@ -82,10 +79,7 @@ def get_unit(s, action_type):
 
     return keys[vals.index(m)]
 
-def get_type_num_unit(s):
-    action_type = get_type(s)
-    unit = get_unit(s, action_type)
-
+def get_num(s):
     num = None
     for word in s.split():
         try:
@@ -95,6 +89,13 @@ def get_type_num_unit(s):
 
     if num is None:
         raise RuntimeError('no number')
+
+    return num
+
+def get_type_num_unit(s):
+    action_type = get_type(s)
+    num = get_num(s)
+    unit = get_unit(s, action_type)
 
     return action_type, num, unit
 
