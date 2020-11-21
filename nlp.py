@@ -17,6 +17,9 @@ def _get_keywords_for_action_type(action_type):
             out[unit] = dd[unit]['keywords']
     return out
 
+def _maximum(freq):
+    raise NotImplementedError('not implemented')
+
 def get_type(s):
     freq = {}
     for action_type in d.keys(): 

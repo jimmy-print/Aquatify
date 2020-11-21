@@ -17,7 +17,7 @@
                 "litre",
                 "litres"
             ],
-            "optimal": 2.25
+            "optimal": 3
         },
         "glasses": {
             "keywords": [
@@ -36,7 +36,7 @@
                 "mililiter",
                 "mililitre"
             ],
-            "optimal": 2250
+            "optimal": 3000
         }
         
     },
