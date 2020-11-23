@@ -1,5 +1,6 @@
 import unittest
 import nlp
+import json
 
 
 s = 'i drink 3 liters of water a day'
@@ -23,6 +24,14 @@ class TestParse(unittest.TestCase):
         self.assertEqual(num, 3)
 
 
+class TestJsonStructure(unittest.TestCase):
+	def setUp(self):
+		with open('data/new.json') as f:
+			self.d = json.load(f)
+
+	def test_each_action_type_has_dict_value(self):
+		for val in self.d.values():
+			self.assertEqual(type(val), dict)
 
 
 if __name__ == '__main__':
