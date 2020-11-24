@@ -33,6 +33,11 @@ class TestJsonStructure(unittest.TestCase):
 		for val in self.d.values():
 			self.assertEqual(type(val), dict)
 
+	def test_each_dict_has_proper_generic(self):
+		for val in self.d.values():
+			self.assertTrue('generic' in val)
+			self.assertEqual(type(val['generic']), dict)
+
 
 if __name__ == '__main__':
     unittest.main()
