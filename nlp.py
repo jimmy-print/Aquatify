@@ -1,4 +1,5 @@
 import json
+from word2number import w2n
 
 with open('data/new.json') as f:
     d = json.load(f)
