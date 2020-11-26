@@ -28,6 +28,11 @@ def home():
 
     try:
         anything = tuple(gen)[0]
+    except IndexError:
+        # nothing in post
+        return flask.render_template('index.html', advice='')
+
+    try:
         assert anything != ''
 
         action_type, num, unit = nlp.get_type_num_unit(anything)
@@ -43,9 +48,7 @@ def home():
     except RuntimeError as e:
         logging.info(' IP: '+IP+' | input detected: %s -> %s', anything, e)
         return flask.render_template('index.html', advice='Please rephrase your input.')
-    except IndexError:
-        # nothing in post
-        return flask.render_template('index.html', advice='')
+
     except AssertionError:
         return flask.render_template('index.html', advice='')
 
