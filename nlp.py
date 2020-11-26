@@ -20,7 +20,7 @@ def _get_keywords_for_action_type(action_type):
 
 def get_type(s):
     freq = {}
-    for action_type in d.keys():
+    for action_type in d.keys(): 
         tmp = 0
         for keyword in _get_all_keywords(action_type):
             for word in s.split():
@@ -29,7 +29,7 @@ def get_type(s):
         freq[action_type] = tmp
 
     m = max(freq.values())
-
+    
     if len(freq.values()) == 1 and m == 0:
         raise RuntimeError(f'only 1 action_type exists and its frequency is 0 {freq}')
 
@@ -63,7 +63,7 @@ def get_unit(s, action_type):
 
     if len(freq.values()) == 1 and m == 0:
         raise RuntimeError(f'only 1 unit exists and its frequency is 0 {freq}')
-
+    
     count = 0
     for val in freq.values():
         if val == m:
@@ -89,39 +89,9 @@ def get_num(s):
             pass
 
     if num is None:
-        num = get_biggest_number(s)
-
-    if num is None:
         raise RuntimeError('no number')
 
     return num
-
-def get_biggest_number(s):
-    def _gen_combos(s):
-        size = len(s)
-        for tmp_size in range(1, size + 1):
-            for i in range(size):
-                yield s[slice(i, i + tmp_size)]
-
-    nums = []
-    for combo in _gen_combos(s):
-        try:
-            nums.append(w2n.word_to_num(combo))
-        except ValueError:
-            pass
-        except IndexError:
-            # Internal error in w2n
-            # (likely caused by bad number, eg thousand hundred)
-            # NOTE: If the user actually puts in, "I drink thousand hundred
-            # liters of water", that will cause the code to set the user's
-            # num value to thousand as that is the maximum number value in
-            # the sentence.
-            pass
-
-    if len(nums) > 0:
-        return max(nums)
-    else:
-        return None
 
 def get_type_num_unit(s):
     action_type = get_type(s)
