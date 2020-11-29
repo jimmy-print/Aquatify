@@ -89,14 +89,14 @@ def get_num(s):
             pass
 
     if num is None:
-        num = get_biggest_number(s)
+        num = _get_biggest_number(s)
 
     if num is None:
         raise RuntimeError('no number')
 
     return num
 
-def get_biggest_number(s):
+def _get_biggest_number(s):
     def _gen_combos(s):
         size = len(s)
         for tmp_size in range(1, size + 1):
