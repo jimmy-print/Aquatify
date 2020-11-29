@@ -24,7 +24,7 @@ class TestParse(unittest.TestCase):
         self.assertEqual(num, 3)
 
 
-class TestJsonStructure(unittest.TestCase):
+class TestDataJsonStructure(unittest.TestCase):
 	def setUp(self):
 		with open('data/data.json') as f:
 			self.d = json.load(f)
@@ -37,6 +37,15 @@ class TestJsonStructure(unittest.TestCase):
 		for val in self.d.values():
 			self.assertTrue('generic' in val)
 			self.assertEqual(type(val['generic']), dict)
+
+
+class TestNumberWordsJson(unittest.TestCase):
+	def test_load(self):
+		with open('data/number_words.json') as f:
+			try:
+				json.load(f)
+			except json.decoder.JSONDecodeError as e:
+				self.fail(f'test_load failed with {e}')
 
 
 if __name__ == '__main__':
