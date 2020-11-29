@@ -1,7 +1,7 @@
 import json
 from word2number import w2n
 
-with open('data/new.json') as f:
+with open('data/data.json') as f:
     d = json.load(f)
 
 def _get_all_keywords(action_type):

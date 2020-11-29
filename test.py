@@ -26,7 +26,7 @@ class TestParse(unittest.TestCase):
 
 class TestJsonStructure(unittest.TestCase):
 	def setUp(self):
-		with open('data/new.json') as f:
+		with open('data/data.json') as f:
 			self.d = json.load(f)
 
 	def test_each_action_type_has_dict_value(self):
