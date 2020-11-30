@@ -3,6 +3,8 @@ from word2number import w2n
 
 with open('data/data.json') as f:
     d = json.load(f)
+with open('data/number_words.json') as f:
+    d_num_words = json.load(f)
 
 def _get_all_keywords(action_type):
     dd = d[action_type]
@@ -95,6 +97,16 @@ def get_num(s):
         raise RuntimeError('no number')
 
     return num
+
+def _get_number_word(s):
+    # TODO each action type should either accept times values (once, twice)
+    # or not. For example I can say I shower twice but I can't say I drink twice.
+    for word in s.split():
+        for key, val in d_num_words.items():
+            if word == key:
+                # Returns the first value.
+                # 'i shower twice thrice' -> 2.0
+                return float(val)
 
 def _get_biggest_number(s):
     def _gen_combos(s):
