@@ -20,7 +20,7 @@ class TestParse(unittest.TestCase):
         self.assertEqual(unit, 'liters')
 
     def test_get_num(self):
-        num = nlp.get_num(s)
+        num = nlp.get_num(s, nlp.get_accept_nw_or_not(nlp.get_type(s)))
         self.assertEqual(num, 3)
 
 

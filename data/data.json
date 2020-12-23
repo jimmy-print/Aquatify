@@ -1,5 +1,6 @@
 {
     "drink-water": {
+		"_accept_nw": "False",
         "generic": {
             "keywords": [
                 "drink",
@@ -34,13 +35,16 @@
                 "mililiters",
                 "mililitres",
                 "mililiter",
-                "mililitre"
+                "mililitre",
+                "mils",
+                "mls"
             ],
             "optimal": 3000
         }
         
     },
     "shower": {
+        "_accept_nw": "True",
         "generic": {
             "keywords": [
                 "shower",

@@ -9,14 +9,15 @@ with open('data/number_words.json') as f:
 def _get_all_keywords(action_type):
     dd = d[action_type]
     for unit in dd:
-        for word in dd[unit]['keywords']:
-            yield word
+        if unit[0] != '_':
+            for word in dd[unit]['keywords']:
+                yield word
 
 def _get_keywords_for_action_type(action_type):
     dd = d[action_type]
     out = {}
     for unit in dd:
-        if unit != 'generic':
+        if unit != 'generic' and unit[0] != '_':
             out[unit] = dd[unit]['keywords']
     return out
 
@@ -82,25 +83,35 @@ def get_unit(s, action_type):
 
     return keys[vals.index(m)]
 
-def get_num(s):
+class CatcherException(Exception): pass
+
+def get_num(s, accept_nw):
     num = None
+    # scan for actual numbers, 1 2 3 123
     for word in s.split():
         try:
             num = float(word)
         except ValueError:
             pass
 
+    # now try to find words like one, two, hundred
     if num is None:
         num = _get_biggest_number(s)
 
+    # finally try to find once twice and thrice
+    # this only applies to certain action_types,
+    # which is specified in data.json. for example
+    # you can't drink twice but you can shower twice.
     if num is None:
-        raise RuntimeError('no number')
+        # check if action_type accepts once twice thrice
+        if accept_nw:
+            raise CatcherException(_get_number_word(s))
+        else:
+            raise RuntimeError('no number')
 
     return num
 
 def _get_number_word(s):
-    # TODO each action type should either accept times values (once, twice)
-    # or not. For example I can say I shower twice but I can't say I drink twice.
     for word in s.split():
         for key, val in d_num_words.items():
             if word == key:
@@ -135,10 +146,20 @@ def _get_biggest_number(s):
     else:
         return None
 
+def get_accept_nw_or_not(action_type):
+    if d[action_type]['_accept_nw'] == 'True':
+        return True
+    return False
+
 def get_type_num_unit(s):
     action_type = get_type(s)
-    num = get_num(s)
-    unit = get_unit(s, action_type)
+    accept_nw = get_accept_nw_or_not(action_type)
+    try:
+        num = get_num(s, accept_nw)
+        unit = get_unit(s, action_type)
+    except CatcherException as e:
+        num = float(str(e))
+        unit = 'times'
 
     return action_type, num, unit
 
