@@ -56,10 +56,9 @@ def get_unit(s, action_type):
     freq = {}
     for unit, keywords in _get_keywords_for_action_type(action_type).items():
         tmp = 0
-        for word in s.split():
-            for keyword in keywords:
-                if word == keyword:
-                    tmp += 1
+        for keyword in keywords:
+            if keyword in s:
+                tmp += 1
         freq[unit] = tmp
 
     m = max(freq.values())

@@ -1,6 +1,6 @@
 {
     "drink-water": {
-		"_accept_nw": "False",
+	"_accept_nw": "False",
         "generic": {
             "keywords": [
                 "drink",
@@ -64,9 +64,37 @@
         },
         "times": {
             "keywords": [
-                "times"
+                "times",
+		"per day",
+		"in a day",
+		"every day",
+		"a day"
             ],
             "optimal": 2
         }
+    },
+    "toilet": {
+	"_accept_nw": "True",
+	"generic": {
+		"keywords": [
+			"toilet",
+			"flush",
+			"shit",
+			"shits",
+			"piss",
+			"pee",
+			"dump"
+		]
+	},
+	"times": {
+		"keywords": [
+			"times",
+			"per day",
+			"in a day",
+			"every day",
+			"a day"
+		],
+		"optimal": 8
+	}
     }
 }
