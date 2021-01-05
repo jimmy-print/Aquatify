@@ -104,9 +104,9 @@ def get_num(s, accept_nw):
     if num is None:
         # check if action_type accepts once twice thrice
         if accept_nw:
-            raise CatcherException(_get_number_word(s))
-        else:
-            raise RuntimeError('no number')
+            if _get_number_word(s) is not None:
+                raise CatcherException(_get_number_word(s))
+        raise RuntimeError('no number')
 
     return num
 
