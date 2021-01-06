@@ -6,7 +6,8 @@ from time import gmtime, strftime
 
 app = flask.Flask(__name__)
 logging.basicConfig(
-    level=logging.DEBUG)
+    level=logging.DEBUG,
+    filename='log.log')
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
