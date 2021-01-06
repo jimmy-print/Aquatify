@@ -7,11 +7,22 @@ from time import gmtime, strftime
 app = flask.Flask(__name__)
 logging.basicConfig(
     level=logging.DEBUG,
-    filename='log.log')
+    filename='log.log',
+    format='%(levelname)s:%(name)s:%(asctime)s:%(message)s')
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     gen = flask.request.form.values()
+
+    try:
+        # Nginx request IP
+        IP = flask.request.environ['HTTP_X_REAL_IP']
+    except KeyError as e:
+        # Flask HTTP server doesn't have HTTP_X_REAL_IP as a header
+        logging.debug('IP exception %s', e)
+        IP = flask.request.environ['REMOTE_ADDR']
+
+    logging.info(IP)
 
     try:
         anything = tuple(gen)[0]
